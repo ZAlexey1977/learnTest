@@ -155,30 +155,44 @@ let log = console.log;
 
 /////////////////////////// unit 3 ///////////////////////////////
 
-function rot13(str) {
-  str = str.split('');
-  function changeNum(num) {
-    if (num > 90 || num < 65) {
-      num = num;
-    }
-    else if ((num + 13) > 90) {
-      num = 65 + (12 - (90 - num));
-    } else {
-      num = num + 13;
-    }
-    return num;
-  }
-  for (let i = 0; i < str.length; i++) {
-    let myNum = str[i].codePointAt(0);
-    str[i] = String.fromCharCode(changeNum(myNum));
-  }
-  return str.join('');
-}
+// function rot13(str) {
+//   str = str.split('');
+//   function changeNum(num) {
+//     if (num > 90 || num < 65) {
+//       num = num;
+//     }
+//     else if ((num + 13) > 90) {
+//       num = 65 + (12 - (90 - num));
+//     } else {
+//       num = num + 13;
+//     }
+//     return num;
+//   }
+//   for (let i = 0; i < str.length; i++) {
+//     let myNum = str[i].codePointAt(0);
+//     str[i] = String.fromCharCode(changeNum(myNum));
+//   }
+//   return str.join('');
+// }
 
-log(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."));
+// log(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."));
 
 /////////////////////////// unit 4 ///////////////////////////////
 
+function telephoneCheck(str) {
+  let ar = [/^\d{10}$/g, /1{1}\W\d{10}/g, /^\d{3}\W\d{3}\W\d{4}$/g];
+  for (let i = 0; i < ar.length; i++) {
+    let temp = ar[i];
+    if (temp.test(str)) {
+      log(temp);
+      return true;
+    }
+  }
+  return false;
+}
+
+log(telephoneCheck("11 555-555-5555"));
+//log(/1{1}\d{10}/g.test("11 555-555-5555"));
 /////////////////////////// unit 5 ///////////////////////////////
 
 /////////////////////////// unit 6 ///////////////////////////////
