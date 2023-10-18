@@ -179,18 +179,32 @@ let log = console.log;
 
 /////////////////////////// unit 4 ///////////////////////////////
 
-function telephoneCheck(str) {
-  let regExp = /^(1\s?)?(\d{3}|\(\d{3}\))[\-\s]?\d{3}[\-\s]?\d{4}$/;
-  return regExp.test(str);
-}
+// function telephoneCheck(str) {
+//   let regExp = /^(1\s?)?(\d{3}|\(\d{3}\))[\-\s]?\d{3}[\-\s]?\d{4}$/;
+//   return regExp.test(str);
+// }
 
-log(telephoneCheck("(555)555-5555"));
+// log(telephoneCheck("(555)555-5555"));
 
 /////////////////////////// unit 5 ///////////////////////////////
 
-/////////////////////////// unit 6 ///////////////////////////////
-// 5555555555
-// 1 555 555 5555
-//555 555 5555 , 555-555-5555, (555) 555-5555, (555)555-5555
+function checkCashRegister(price, cash, cid) {
+  let change = cash - price;
+  let result = {
+    status: '',
+    change: []
+  };
 
-///1{1}\W\d{10}/g, /^\W\d{3}\W\d{3}\W\d{4}$/g,
+  let kassa = Object.fromEntries(cid);
+  if (change > 100 && kassa['ONE HUNDRED'] > 0) {
+    change = change - 100;
+  }
+
+  return result;
+}
+
+log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05],
+["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55],
+["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+
+/////////////////////////// unit 6 ///////////////////////////////
